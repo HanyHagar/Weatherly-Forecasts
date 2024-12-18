@@ -66,17 +66,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/*{
-  "Splash_description":"ابقَ على اطلاع دائم بأحوال الطقس مع توقعاتنا وتحديثاتنا الفورية. يوفر لك weathrly بيانات دقيقة وتنبيهات شخصية. استكشف الظروف الحالية والتوقعات على مدار الساعة والأسبوع.",
-  "Today": "اليوم",
-  "Day_Forecasts": "٧ أيام المقبلة",
-  "Other_Location": "أماكن أخري"
-}*/
-/*
-* {
-  "splash_description":"stay up to date with weather conditions through our forecasts and real-time updates. weathrly provides accurate data and personalized alerts. explore current conditions and hourly and weekly forecasts.",
-  "Today": "Today",
-  "Days_Forecasts": "7-Day Forecasts",
-  "Other_Location": "Other Location"
 
-}*/
