@@ -22,7 +22,7 @@ class NextDaysViewDayItem extends StatelessWidget {
           flex: 3,
           child: Text(
             day.date.toString().isNotEmpty
-                ? ' ${DateFormat('EEEE').format(DateTime.parse(day.date.toString()))}' // Only day name
+                ? ' ${DateFormat('EEEE').format(DateTime.parse(day.date.toString(),),)}' // Only day name
                 : 'Invalid date',
             style: Styles.textStyle700.copyWith(fontSize: 13.sp),
           ),

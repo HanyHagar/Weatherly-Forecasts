@@ -204,4 +204,5 @@ class Current extends HiveObject {
     "time": time,
     "chance_of_snow": chanceOfSnow,
   };
+
 }

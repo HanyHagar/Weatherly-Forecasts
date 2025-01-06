@@ -7,8 +7,9 @@ import '../../../../../core/utils/styles.dart';
 
 class HomeViewAppBar extends StatelessWidget {
   final Location location;
+  final String welcomeText;
   const HomeViewAppBar({
-    super.key, required this.location,
+    super.key, required this.location, required this.welcomeText,
   });
 
 
@@ -31,7 +32,7 @@ class HomeViewAppBar extends StatelessWidget {
               ],
             ),
              Text(
-              "Good Morning",
+              welcomeText,
               style: Styles.textStyle500.copyWith(color: Colors.white.withOpacity(0.9),fontSize: 23.sp ),
             ),
           ],

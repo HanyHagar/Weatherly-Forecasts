@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weatherly_forecasts/features/home/data/model/weather_model.dart';
@@ -28,6 +29,7 @@ class HomeViewBody extends StatelessWidget {
               children: [
                 HomeViewAppBar(
                   location: location,
+                  welcomeText: homeCubit.setWelcomeText(sunset: currentForecast.astro.sunset,sunrise:currentForecast.astro.sunrise ),
                 ),
                 const Spacer(),
                 HomeViewMainWeatherDetails(

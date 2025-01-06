@@ -1,7 +1,6 @@
-// ignore_for_file: depend_on_referenced_packages
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:meta/meta.dart';
 import 'package:weatherly_forecasts/features/home/data/model/current_model.dart';
 import 'package:weatherly_forecasts/features/home/data/model/forecastday_model.dart';
 import 'package:weatherly_forecasts/features/home/data/model/weather_model.dart';
@@ -14,7 +13,8 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeRepo homeRepo;
   late WeatherModel weatherModel;
 
-  Future<void> fetchWeather({required String location , required String lang }) async {
+  Future<void> fetchWeather(
+      {required String location, required String lang}) async {
     emit(FetchWeatherLoading());
     var result = await homeRepo.fetchWeather(location: location, lang: lang);
     result.fold((failure) {
@@ -27,21 +27,22 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  Future<void> fetchHiveWeather({ bool fetchWeatherError = false, bool needUpdates = true}) async {
+  Future<void> fetchHiveWeather(
+      {bool fetchWeatherError = false, bool needUpdates = true}) async {
     emit(FetchHiveWeatherLoading());
     var result = await homeRepo.fetchHiveWeather();
     result.fold((failure) {
-      if(fetchWeatherError == true ){
+      if (fetchWeatherError == true) {
         emit(FetchHiveWeatherFailure(error: failure.errMessage));
-      }
-      else{
-        addHiveWeather(model: weatherModel, );
+      } else {
+        addHiveWeather(
+          model: weatherModel,
+        );
       }
     }, (model) {
-      if(fetchWeatherError == false && needUpdates == true){
-        updateHiveWeather(model: model);
-      }
-      else {
+      if (fetchWeatherError == false && needUpdates == true) {
+        updateHiveWeather(model: weatherModel);
+      } else {
         emit(FetchHiveWeatherSuccess(model: model));
       }
     });
@@ -60,7 +61,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> updateHiveWeather({required WeatherModel model}) async {
     emit(UpdateHiveWeatherLoading());
-    var result = await homeRepo.fetchHiveWeather();
+    var result = await homeRepo.updateHiveWeather(model: model);
     result.fold((failure) {
       emit(UpdateHiveWeatherFailure(error: failure.errMessage));
     }, (model) {
@@ -92,24 +93,25 @@ class HomeCubit extends Cubit<HomeState> {
     int indexOfCurrentDay = 0;
     var now = DateFormat('yyyy-MM-dd HH').format(DateTime.now());
     for (int item = 0; item < data.hour.length; item++) {
-      var time = DateFormat('yyyy-MM-dd HH').format(DateTime.parse(data.hour[item].time.toString()));
+      var time = DateFormat('yyyy-MM-dd HH')
+          .format(DateTime.parse(data.hour[item].time.toString()));
       if (now == time) {
         indexOfCurrentDay = item;
-        data.hour[indexOfCurrentDay].time = DateFormat('EEEE, d, h:mm a').format(DateTime.now()).toString();
+        data.hour[indexOfCurrentDay].time =
+            DateFormat('EEEE, d, h:mm a').format(DateTime.now()).toString();
         return data.hour[indexOfCurrentDay];
       }
     }
     return data.hour[indexOfCurrentDay];
   }
 
-  Forecastday tomorrow(List<Forecastday> days){
+  Forecastday tomorrow(List<Forecastday> days) {
     int currentDay = indexOfCurrentForecastModel(days);
-    if(currentDay == days.length-1){
+    if (currentDay == days.length - 1) {
       var day = days[currentDay];
       return day;
-    }
-    else{
-      var day = days[currentDay+1];
+    } else {
+      var day = days[currentDay + 1];
       return day;
     }
   }
@@ -122,8 +124,12 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  int averageAirQuality({required int humidity , required double precipitation , required double windSpeed}){
-    var airQuality = (humidity * 0.3) + (1 - precipitation) * 0.4 + (windSpeed * 0.3);
+  int averageAirQuality(
+      {required int humidity,
+      required double precipitation,
+      required double windSpeed}) {
+    var airQuality =
+        (humidity * 0.3) + (1 - precipitation) * 0.4 + (windSpeed * 0.3);
     return airQuality.toInt();
   }
 
@@ -190,4 +196,17 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-}
+
+  String setWelcomeText({required String sunrise, required String sunset}) {
+    // Get the current time in 'yyyy-MM-dd HH' format
+    var now = DateFormat('HH').format(DateTime.now());
+    var sunriseTime = DateFormat('HH').parse(sunrise);
+    var sunsetTime = DateFormat('HH').parse(sunset);
+    var currentTime = DateFormat('HH').parse(now);
+
+    if (currentTime.isBefore(sunsetTime) && currentTime.isAfter(sunriseTime)) {
+      return 'Good Morning';
+    } else {
+      return 'Good Evening';
+    }
+  }}

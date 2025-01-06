@@ -1,5 +1,4 @@
 
-import 'dart:developer';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class HomeView extends StatelessWidget {
         listener: (context, state) {
           if(state is FetchHiveWeatherSuccess){
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBarWidget.create(title: " Hive Success", message: state.model.location.name, type: ContentType.success),
+              SnackBarWidget.create(title: "Success", message: state.model.location.name, type: ContentType.success),
 
             );
           }

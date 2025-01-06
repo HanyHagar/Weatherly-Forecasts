@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weatherly_forecasts/core/utils/styles.dart';
 import 'package:weatherly_forecasts/features/home/data/model/current_model.dart';
-import 'package:weatherly_forecasts/features/home/presentation/manager/home_cubit.dart';
-import 'package:weatherly_forecasts/generated/assets.dart';
 
 class HomeViewMainWeatherDetails extends StatelessWidget {
   final Current current;
@@ -33,7 +31,6 @@ class HomeViewMainWeatherDetails extends StatelessWidget {
                       TextSpan(
                         text: current.tempC.toInt().toString(),
                         style: Styles.textStyle500.copyWith(color: Colors.white.withOpacity(0.9),fontSize: 85.sp ),
-
                       ),
                       WidgetSpan(
                         child: Transform.translate(
