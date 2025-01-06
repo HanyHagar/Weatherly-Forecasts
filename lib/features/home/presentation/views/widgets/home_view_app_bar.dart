@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weatherly_forecasts/features/home/data/model/location_model.dart';
@@ -15,7 +14,7 @@ class HomeViewAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.sizeOf(context);
+    MediaQuery.sizeOf(context);
     return Row(
       children: [
         const SizedBox(height: 16,),
@@ -25,11 +24,10 @@ class HomeViewAppBar extends StatelessWidget {
             Row(
               children: [
                 Text(
-                    "📍${location.name} ",
-                  style: Styles.textStyle700.copyWith(color: Colors.white.withOpacity(0.9),fontSize: 13.sp ),
+                    "📍${location.name}",
+                  style: Styles.textStyle700.copyWith(color: Colors.white.withOpacity(0.9),fontSize: 16.sp ),
                   textAlign: TextAlign.start,
                 ),
-                Icon(CupertinoIcons.arrow_up_right,color: Styles.whiteColor,size: mediaQuery.width/20,)
               ],
             ),
              Text(

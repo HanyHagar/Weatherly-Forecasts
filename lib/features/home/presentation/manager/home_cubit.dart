@@ -1,6 +1,4 @@
 // ignore_for_file: depend_on_referenced_packages
-
-import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
@@ -8,7 +6,6 @@ import 'package:weatherly_forecasts/features/home/data/model/current_model.dart'
 import 'package:weatherly_forecasts/features/home/data/model/forecastday_model.dart';
 import 'package:weatherly_forecasts/features/home/data/model/weather_model.dart';
 import 'package:weatherly_forecasts/features/home/data/repo/home_repo.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -128,6 +125,69 @@ class HomeCubit extends Cubit<HomeState> {
   int averageAirQuality({required int humidity , required double precipitation , required double windSpeed}){
     var airQuality = (humidity * 0.3) + (1 - precipitation) * 0.4 + (windSpeed * 0.3);
     return airQuality.toInt();
+  }
+
+  String getWeatherIcon(int weatherCode) {
+    switch (weatherCode) {
+      case 1087:
+      case 1273:
+      case 1276:
+      case 1279:
+      case 1282:
+        return "assets/images/1.png";
+      case 1180:
+      case 1183:
+      case 1063:
+      case 1150:
+      case 1153:
+      case 1186:
+      case 1189:
+      case 1240:
+        return "assets/images/2.png";
+      case 1192:
+      case 1195:
+      case 1201:
+      case 1243:
+      case 1246:
+        return "assets/images/3.png";
+      case 1066:
+      case 1069:
+      case 1072:
+      case 1114:
+      case 1117:
+      case 1171:
+      case 1198:
+      case 1204:
+      case 1207:
+      case 1210:
+      case 1213:
+      case 1216:
+      case 1219:
+      case 1222:
+      case 1225:
+      case 1237:
+      case 1249:
+      case 1252:
+      case 1255:
+      case 1258:
+      case 1261:
+      case 1264:
+      case 1168:
+        return "assets/images/4.png";
+      case 1030:
+      case 1035:
+      case 1147:
+        return "assets/images/5.png";
+      case 1000:
+        return "assets/images/6.png";
+      case 1003:
+        return "assets/images/7.png";
+      case 1006:
+      case 1009:
+        return "assets/images/8.png";
+      default:
+        return "assets/images/9.png";
+    }
   }
 
 }

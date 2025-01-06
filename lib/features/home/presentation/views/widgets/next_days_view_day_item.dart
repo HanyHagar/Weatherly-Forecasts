@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:weatherly_forecasts/core/utils/api_services.dart';
 import 'package:weatherly_forecasts/core/utils/styles.dart';
 import 'package:weatherly_forecasts/features/home/data/model/forecastday_model.dart';
-import 'package:weatherly_forecasts/generated/assets.dart';
+import 'package:weatherly_forecasts/features/home/data/repo/home_repo_impl.dart';
+import 'package:weatherly_forecasts/features/home/presentation/manager/home_cubit.dart';
 
 class NextDaysViewDayItem extends StatelessWidget {
   final Forecastday day;
@@ -31,7 +33,7 @@ class NextDaysViewDayItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                Assets.images6,
+                HomeCubit(HomeRepoImpl(ApiServices())).getWeatherIcon(day.day.condition.code),
                 width: mediaQuery.width / 12,
                 height: mediaQuery.height / 12,
               ),

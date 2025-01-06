@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:hive/hive.dart';
 import 'package:weatherly_forecasts/const/const_text.dart';
 import 'package:weatherly_forecasts/features/home/data/model/weather_model.dart';

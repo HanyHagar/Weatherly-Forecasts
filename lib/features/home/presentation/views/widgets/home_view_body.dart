@@ -31,7 +31,7 @@ class HomeViewBody extends StatelessWidget {
                 ),
                 const Spacer(),
                 HomeViewMainWeatherDetails(
-                  current: currentHour,
+                  current: currentHour, image: homeCubit.getWeatherIcon(currentHour.condition.code),
                 ),
                 const Spacer(),
                 HomeViewNextDays(

@@ -28,6 +28,7 @@ class Assets {
   static const String imagesAirQuality = 'assets/images/airQuality.png';
   static const String imagesBackgroundWeather = 'assets/images/background_weather.png';
   static const String imagesHumidity = 'assets/images/humidity.png';
+  static const String imagesMoon = 'assets/images/moon.png';
   static const String imagesPrecipitation = 'assets/images/precipitation.png';
   static const String imagesSunrise = 'assets/images/sunrise.png';
   static const String imagesSunset = 'assets/images/sunset.png';

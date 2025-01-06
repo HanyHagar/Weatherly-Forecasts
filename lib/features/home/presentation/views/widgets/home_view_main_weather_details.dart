@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:weatherly_forecasts/core/utils/styles.dart';
 import 'package:weatherly_forecasts/features/home/data/model/current_model.dart';
+import 'package:weatherly_forecasts/features/home/presentation/manager/home_cubit.dart';
 import 'package:weatherly_forecasts/generated/assets.dart';
 
 class HomeViewMainWeatherDetails extends StatelessWidget {
   final Current current;
-
-  const HomeViewMainWeatherDetails({super.key, required this.current});
+  final String  image;
+  const HomeViewMainWeatherDetails({super.key, required this.current, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class HomeViewMainWeatherDetails extends StatelessWidget {
     return Column(
       children: [
         Image.asset(
-          Assets.images6,
+          image,
           width: mediaQuery.width,
           height: mediaQuery.height / 3,
         ),
